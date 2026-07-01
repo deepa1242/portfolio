@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepa M | Software Developer Portfolio</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
+
+:root {
+    --bg-primary: #050505;
+    --bg-secondary: #111;
+    --accent-primary: #00e5ff;
+    --accent-secondary: #0077ff;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --border-color: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Typography & Utilities */
+.text-gradient {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-padding {
+    padding: 100px 5%;
+}
+
+.max-width {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-weight: 800;
+}
+
+/* Navbar */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+}
+
+nav.scrolled {
+    background: rgba(5, 5, 5, 0.8);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 5%;
+}
+
+.logo {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--gradient);
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--accent-primary);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: var(--accent-primary);
+    filter: blur(200px);
+    opacity: 0.2;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeInUp 1s ease;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-title {
+    font-size: 5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-desc {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: #000;
+    box-shadow: 0 10px 20px rgba(0, 229, 255, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 25px rgba(0, 229, 255, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent-primary);
+    color: var(--text-primary);
+    margin-left: 15px;
+}
+
+.btn-outline:hover {
+    background: rgba(0, 229, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+@media (max-width: 480px) {
+    .btn-outline {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    .hero-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* About & Objective */
+.about {
+    background: var(--bg-secondary);
+}
+
+.objective-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 20px;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.objective-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.15);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Cards */
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 40px;
+    border-radius: 20px;
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0;
+    transition: 0.4s;
+    z-index: 0;
+}
+
+.card:hover::before {
+    opacity: 0.05;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+}
+
+.card-content {
+    position: relative;
+    z-index: 1;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.card-subtitle {
+    color: var(--accent-primary);
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.card-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Skills Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tag {
+    background: rgba(255,255,255,0.05);
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    transition: 0.3s;
+}
+
+.tag:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--text-primary);
+    border-color: var(--accent-primary);
+}
+
+/* Education Layout */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    border-left: 2px solid var(--border-color);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-primary);
+    border-radius: 50%;
+}
+
+.timeline-date {
+    color: var(--accent-secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+/* Contact Section */
+.contact {
+    background: var(--bg-secondary);
+    text-align: center;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    transition: 0.3s;
+}
+
+.contact-item:hover {
+    color: var(--accent-primary);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--accent-primary);
+    transition: 0.3s;
+}
+
+.contact-item:hover .contact-icon {
+    background: var(--gradient);
+    color: #000;
+    border-color: transparent;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .contact-info { flex-direction: column; align-items: center; gap: 20px; }
+    .section-padding { padding: 60px 5%; }
+}
+
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">DEEPA<span class="text-gradient">.M</span></a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero section-padding">
+        <div class="max-width">
+            <div class="hero-wrapper" style="display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap-reverse;">
+                <div class="hero-content" style="flex: 1; min-width: 300px;">
+                    <span class="hero-subtitle">Hello, I am</span>
+                    <h1 class="hero-title">Deepa M</h1>
+                    <p class="hero-desc">An aspiring Software Developer currently pursuing BE in Computer Science. Passionate about Java, Full Stack Web Development, and creating efficient applications.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="RESUME DEEPA.pdf" target="_blank" class="btn btn-outline">View Resume <i class="fa-solid fa-file-pdf" style="margin-left: 5px;"></i></a>
+                    </div>
+                </div>
+                <div class="hero-image" style="flex: 1; display: flex; justify-content: center; min-width: 300px; margin-bottom: 20px;">
+                    <div style="width: 300px; height: 300px; border-radius: 50%; padding: 8px; background: var(--gradient); box-shadow: 0 15px 35px rgba(0, 229, 255, 0.2);">
+                        <img src="IMG-20260701-WA0010.jpg" alt="Deepa M" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 6px solid var(--bg-primary);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section-padding">
+        <div class="max-width reveal">
+            <h2 class="section-title">Career <span class="text-gradient">Objective</span></h2>
+            <div class="objective-card">
+                "Detail-oriented and motivated Computer Science Engineering student with a foundation in full-stack web development, Java, and database management. Eager to apply academic and hands-on project experience in a Software Developer role to build scalable applications while continuously upskilling in a dynamic environment."
+            </div>
+
+            <div class="grid-2" style="margin-top: 60px;">
+                <div class="education">
+                    <h3 style="font-size: 2rem; margin-bottom: 30px;">Education</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-date">Expected Graduation: May 2027</div>
+                            <h4 style="font-size: 1.3rem;">Bachelor of Engineering (BE) in Computer Science</h4>
+                            <p style="color: var(--text-secondary); margin-top: 5px;">Shree Venkateshwara Hi Tech Engineering College</p>
+                            <p style="color: var(--accent-primary); font-weight: 600; margin-top: 10px;">CGPA: 8.69</p>
+                            <div class="tags" style="margin-top: 15px;">
+                                <span class="tag">Object-Oriented Programming</span>
+                                <span class="tag">Database Management Systems</span>
+                                <span class="tag">Web Technologies</span>
+                                <span class="tag">Data Structures & Algorithms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interests">
+                    <h3 style="font-size: 2rem; margin-bottom: 30px;">Areas of Interest</h3>
+                    <div class="card" style="margin-bottom: 20px; padding: 25px;">
+                        <div class="card-content" style="display: flex; align-items: center; gap: 20px;">
+                            <i class="fa-solid fa-laptop-code text-gradient" style="font-size: 2rem;"></i>
+                            <h4 style="font-size: 1.2rem;">Web Development</h4>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 25px;">
+                        <div class="card-content" style="display: flex; align-items: center; gap: 20px;">
+                            <i class="fa-solid fa-mobile-screen-button text-gradient" style="font-size: 2rem;"></i>
+                            <h4 style="font-size: 1.2rem;">Mobile App Development</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding">
+        <div class="max-width reveal">
+            <h2 class="section-title">Technical <span class="text-gradient">Skills</span></h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fa-solid fa-code card-icon"></i>
+                        <h3 class="card-title">Programming</h3>
+                        <p class="card-desc">Strong foundation in modern programming languages.</p>
+                        <div class="tags">
+                            <span class="tag">Java (Basics)</span>
+                            <span class="tag">C (Basics)</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">HTML5 & CSS3</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fa-solid fa-layer-group card-icon"></i>
+                        <h3 class="card-title">Frameworks & Tools</h3>
+                        <p class="card-desc">Technologies used for building robust applications.</p>
+                        <div class="tags">
+                            <span class="tag">Django</span>
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">JSP</span>
+                            <span class="tag">Apache Tomcat</span>
+                            <span class="tag">XAMPP</span>
+                            <span class="tag">VS Code</span>
+                            <span class="tag">Eclipse IDE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fa-solid fa-database card-icon"></i>
+                        <h3 class="card-title">Databases & Core Competencies</h3>
+                        <p class="card-desc">Data management and software engineering principles.</p>
+                        <div class="tags">
+                            <span class="tag">MySQL</span>
+                            <span class="tag">OOPs</span>
+                            <span class="tag">Problem Solving</span>
+                            <span class="tag">Full-Stack Dev</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="about section-padding">
+        <div class="max-width reveal">
+            <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-subtitle">Python Application</div>
+                        <h3 class="card-title">Hospital Management</h3>
+                        <p class="card-desc">Developed a web application to streamline healthcare operations by managing patient records, doctor schedules, and appointment bookings.</p>
+                        <div class="tags" style="margin-top: 30px;">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-subtitle">E-Commerce Platform</div>
+                        <h3 class="card-title">Direct Farm Web App</h3>
+                        <p class="card-desc">Developed a full-stack e-commerce platform designed to connect farmers directly with consumers, eliminating middle-men.</p>
+                        <div class="tags" style="margin-top: 30px;">
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">HTML5/CSS3</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-subtitle">Workflow Portal</div>
+                        <h3 class="card-title">Complaint Management</h3>
+                        <p class="card-desc">Built a web-based workflow portal to efficiently streamline, track, and resolve user grievances and internal company complaints.</p>
+                        <div class="tags" style="margin-top: 30px;">
+                            <span class="tag">JSP</span>
+                            <span class="tag">Apache Tomcat</span>
+                            <span class="tag">XAMPP</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" class="section-padding">
+        <div class="max-width reveal">
+            <h2 class="section-title">Certifications & <span class="text-gradient">Achievements</span></h2>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fa-solid fa-certificate card-icon"></i>
+                        <h3 class="card-title" style="font-size: 1.2rem;">NPTEL Certification</h3>
+                        <p class="card-desc">Successfully completed the NPTEL Certification in Computer Networks and Protocols.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fa-solid fa-lightbulb card-icon"></i>
+                        <h3 class="card-title" style="font-size: 1.2rem;">Ideathon Finalist</h3>
+                        <p class="card-desc">Successfully cleared preliminary presentation rounds and selected for the final stage of a competitive corporate Ideathon.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fa-solid fa-trophy card-icon"></i>
+                        <h3 class="card-title" style="font-size: 1.2rem;">Hackathon Participant</h3>
+                        <p class="card-desc">Actively competed and ideated in a regional technical hackathon focused on driving AI Innovation.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-content">
+                        <i class="fa-solid fa-laptop-code card-icon"></i>
+                        <h3 class="card-title" style="font-size: 1.2rem;">Workshops & Learning</h3>
+                        <p class="card-desc">Attended technical workshops focusing on emerging web technologies and modern software engineering practices.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section-padding">
+        <div class="max-width reveal">
+            <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+            <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 600px; margin: 0 auto;">
+                Currently looking for software developer opportunities. Feel free to reach out if you have a role that matches my profile!
+            </p>
+            
+            <div class="contact-info">
+                <a href="mailto:deepamalaiyappan5@gmail.com" class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <span>deepamalaiyappan5@gmail.com</span>
+                </a>
+                
+                <a href="tel:+916374773203" class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <span>+91 6374773203</span>
+                </a>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <span>Tirupur, Tamil Nadu - 641666</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="https://www.linkedin.com/in/deepa-m-407970352" target="_blank" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px;">
+                    <i class="fa-brands fa-linkedin" style="font-size: 1.2rem;"></i> Connect on LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="max-width">
+            <p>&copy; 2024 Deepa M. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Reveal elements on scroll
+function reveal() {
+    var reveals = document.querySelectorAll('.reveal');
+
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add('active');
+        }
+    }
+}
+
+window.addEventListener('scroll', reveal);
+reveal(); // Trigger on load
+
+</script>
+</body>
+</html>
